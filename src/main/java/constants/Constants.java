@@ -25,6 +25,7 @@ public class Constants {
         //jsonplaceholder
         public static String JSONPLACEHOLDER_GET = "comments/";
         public static String JSONPLACEHOLDER_PUT = "posts/1/";
+        public static String JSONPLACEHOLDER_DELETE = "posts/1/";
 
     }
 }
