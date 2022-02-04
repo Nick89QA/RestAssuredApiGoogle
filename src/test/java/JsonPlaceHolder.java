@@ -34,5 +34,17 @@ public class JsonPlaceHolder extends TestConfig {
                 then().log().body().statusCode(200);
     }
 
+    @Test
+    public void PostWithJson() {
+
+        String postJsonBody = "{\n" +
+                "\"title\":\"foo\",\n" +
+                "\"body\":\"bar\",\n" +
+                "\"userId\":1\n";
+
+        given().body(postJsonBody).log().uri().
+                when().put(JSONPLACEHOLDER_POST).
+                then().log().body().statusCode(200);
+    }
 
 }
