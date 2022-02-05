@@ -43,7 +43,28 @@ public class JsonPlaceHolder extends TestConfig {
                 "\"userId\":1\n";
 
         given().body(postJsonBody).log().uri().
-                when().put(JSONPLACEHOLDER_POST).
+                when().post(JSONPLACEHOLDER_POST).
+                then().log().body().statusCode(201);
+    }
+
+    @Test
+    public void PostWithXml() {
+        String postXmlBody = "<Company>\n" +
+                "  <Employee>\n" +
+                "      <FirstName>Tanmay</FirstName>\n" +
+                "      <LastName>Patil</LastName>\n" +
+                "      <ContactNo>1234567890</ContactNo>\n" +
+                "      <Email>tanmaypatil@xyz.com</Email>\n" +
+                "      <Address>\n" +
+                "           <City>Bangalore</City>\n" +
+                "           <State>Karnataka</State>\n" +
+                "           <Zip>560212</Zip>\n" +
+                "      </Address>\n" +
+                "  </Employee>\n" +
+                "</Company>";
+
+        given().body(postXmlBody).log().uri().
+                when().post("").
                 then().log().body().statusCode(200);
     }
 

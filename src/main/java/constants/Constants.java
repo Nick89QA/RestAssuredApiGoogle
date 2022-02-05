@@ -2,14 +2,16 @@ package constants;
 
 public class Constants {
     public static class RunVariable {
-        public static String server = Servers.JSON_PLACEHOLDER_URL;
+        public static String server = Servers.REQUSTBIN_URL;
         public static String path = "";
     }
 
     public static class Servers {
         public static String SWAPI_URL = "https://swapi.co/";
         public static String JSON_PLACEHOLDER_URL = "https://jsonplaceholder.typicode.com/";
-        public static String GOOGLE_PLACES_URL;
+        public static String GOOGLE_PLACES_URL = "https://maps.googleapis.com/";
+        public static String POSTMAN_ECHO_URL = "https://postman-echo.com/post";
+        public static String REQUSTBIN_URL = "https://enb8mm44qo8y71v.m.pipedream.net";
     }
 
     public static class Path {
