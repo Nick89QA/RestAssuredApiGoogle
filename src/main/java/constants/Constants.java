@@ -2,7 +2,7 @@ package constants;
 
 public class Constants {
     public static class RunVariable {
-        public static String server = Servers.REQUSTBIN_URL;
+        public static String server = Servers.JSON_PLACEHOLDER_URL;
         public static String path = "";
     }
 

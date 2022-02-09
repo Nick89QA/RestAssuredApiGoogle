@@ -42,7 +42,7 @@ public class JsonPlaceHolder extends TestConfig {
                 "\"body\":\"bar\",\n" +
                 "\"userId\":1\n";
 
-        given().body(postJsonBody).log().uri().
+        given().body(postJsonBody).log().all().
                 when().post(JSONPLACEHOLDER_POST).
                 then().log().body().statusCode(201);
     }
