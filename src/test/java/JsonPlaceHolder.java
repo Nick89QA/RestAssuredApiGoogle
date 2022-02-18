@@ -40,7 +40,8 @@ public class JsonPlaceHolder extends TestConfig {
         String postJsonBody = "{\n" +
                 "\"title\":\"foo\",\n" +
                 "\"body\":\"bar\",\n" +
-                "\"userId\":1\n";
+                "\"userId\":1\n" +
+                 "}";
 
         given().body(postJsonBody).log().all().
                 when().post(JSONPLACEHOLDER_POST).
@@ -63,7 +64,7 @@ public class JsonPlaceHolder extends TestConfig {
                 "  </Employee>\n" +
                 "</Company>";
 
-        given().body(postXmlBody).log().uri().
+        given().spec(requestSpecificationXML).body(postXmlBody).log().all().//add specification for this request
                 when().post("").
                 then().log().body().statusCode(200);
     }
