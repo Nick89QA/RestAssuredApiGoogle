@@ -36,16 +36,14 @@ public class JsonPlaceHolder extends TestConfig {
 
     @Test
     public void PostWithJson() {
-
         String postJsonBody = "{\n" +
                 "\"title\":\"foo\",\n" +
                 "\"body\":\"bar\",\n" +
                 "\"userId\":1\n" +
                  "}";
-
-        given().body(postJsonBody).log().all().
-                when().post(JSONPLACEHOLDER_POST).
-                then().log().body().statusCode(201);
+        given().spec(requestSpecificationJson).body(postJsonBody).log().all().//add specification for this request
+                when().post("").
+                then().spec(responseSpecificationForPost).log().body().statusCode(200);
     }
 
     @Test
@@ -66,7 +64,7 @@ public class JsonPlaceHolder extends TestConfig {
 
         given().spec(requestSpecificationXML).body(postXmlBody).log().all().//add specification for this request
                 when().post("").
-                then().log().body().statusCode(200);
+                then().spec(responseSpecificationForGet).log().body().statusCode(200);
     }
 
 }
