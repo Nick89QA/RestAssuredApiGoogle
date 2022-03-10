@@ -41,9 +41,10 @@ public class JsonPlaceHolder extends TestConfig {
                 "\"body\":\"bar\",\n" +
                 "\"userId\":1\n" +
                  "}";
-        given().spec(requestSpecificationJson).body(postJsonBody).log().all().//add specification for this request
-                when().post("").
-                then().spec(responseSpecificationForPost).log().body().statusCode(200);
+         given().body(postJsonBody).log().all().
+        // given().spec(requestSpecificationJson).body(postJsonBody).log().all().//add specification for this request
+                when().post(JSONPLACEHOLDER_POST).
+                then().spec(responseSpecificationForPost).log().body();
     }
 
     @Test

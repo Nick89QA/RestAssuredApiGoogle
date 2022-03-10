@@ -17,7 +17,6 @@ public class TestConfig {
             .setBaseUri(SWAPI_URL)
             .build();
 
-
     protected RequestSpecification requestSpecificationXML = new RequestSpecBuilder()
             .addHeader("Content-Type", "application/xml")//add params
             .addCookie("testCookieXML")//add params
@@ -42,10 +41,10 @@ public class TestConfig {
     public void setUp() {
         RestAssured.baseURI = server;//заимпортили статическую переменную
         RestAssured.basePath = path;
-        RequestSpecification requestSpecificationForUdemyCourse = new RequestSpecBuilder()
-                .addHeader("Content-Type", "application/json")
-                .addCookie("testCookie")
-                .build();
+//        RequestSpecification requestSpecificationForUdemyCourse = new RequestSpecBuilder()
+//                .addHeader("Content-Type", "application/json")
+//                .addCookie("testCookie")
+//                .build();
 
 
 // Этот запрос создан для набора уникальных и общих параметров
