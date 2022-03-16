@@ -8,6 +8,7 @@ import java.util.Map;
 import static constants.Constants.Actions.SWAPI_GET_PEOPLE;
 import static constants.Constants.Path.SWAPI_PATH;
 import static io.restassured.RestAssured.*;
+import static io.restassured.matcher.RestAssuredMatchers.matchesXsdInClasspath;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class FirstTest extends TestConfig {
@@ -72,7 +73,13 @@ public class FirstTest extends TestConfig {
 
         String contentType = response.getContentType();
         System.out.println("contentType--->" + contentType);
+    }
 
+    @Test
+    public void validateXmlSchema() {
+     given().log().uri()
+             .when().get("https://maps.googleapis.com/maps/api/place/findplacefromtext/xml?key= AIzaSyBoFQSFeZAH2klr_j4oktUs5QOg1pOWYkQ&input=New York&inputtype=textquery&fields=address_component,adr_address, business_status,formatted_address,geometry,icon,icon_mask_base_uri,icon_background_color,name,permanently_closed (deprecated),photo,place_id,plus_code, type,url,utc_offset,vicinity.&language=ru")
+             .then().body(matchesXsdInClasspath("xmlSchema.xsd")).log().body();
     }
 
 }
