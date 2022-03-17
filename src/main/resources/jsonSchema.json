@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "candidates": [],
+      "error_message": "You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
+      "status": "REQUEST_DENIED"
+    }
+  ],
+  "required": [
+    "candidates",
+    "error_message",
+    "status"
+  ],
+  "properties": {
+    "candidates": {
+      "$id": "#/properties/candidates",
+      "type": "array",
+      "title": "The candidates schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        []
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/candidates/items"
+      }
+    },
+    "error_message": {
+      "$id": "#/properties/error_message",
+      "type": "string",
+      "title": "The error_message schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started"
+      ]
+    },
+    "status": {
+      "$id": "#/properties/status",
+      "type": "string",
+      "title": "The status schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "REQUEST_DENIED"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
