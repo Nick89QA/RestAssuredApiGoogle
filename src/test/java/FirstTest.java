@@ -77,24 +77,34 @@ public class FirstTest extends TestConfig {
     }
 
     @Test
-    public void validateXmlSchema() {
+    public void validateXmlSchema() {//использованы матчеры для сравнения данных в xml формате
         given().log().uri()
                 .when().get("https://maps.googleapis.com/maps/api/place/findplacefromtext/xml?key=AIzaSyBoFQSFeZAH2klr_j4oktUs5QOg1pOWYkQ&input=New York&inputtype=textquery&fields=address_component,adr_address, business_status,formatted_address,geometry,icon,icon_mask_base_uri,icon_background_color,name,permanently_closed (deprecated),photo,place_id,plus_code, type,url,utc_offset,vicinity.&language=ru")
                 .then().body(matchesXsdInClasspath("xmlSchema.xsd")).log().all();
     }
 
     @Test
-    public void validateJsonExample() {
+    public void validateJsonExample() {//использованы матчеры для сравнения данных в json формате
         given().log().uri()
                 .when().get("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyBoFQSFeZAH2klr_j4oktUs5QOg1pOWYkQ&input=New York&inputtype=textquery&fields=address_component,adr_address, business_status,formatted_address,geometry,icon,icon_mask_base_uri,icon_background_color,name,permanently_closed (deprecated),photo,place_id,plus_code, type,url,utc_offset,vicinity.&language=ru")
                 .then().body(matchesJsonSchemaInClasspath("jsonSchema.json")).log().body();
     }
 
     @Test
-    public void validateJsonExampleWithError() {
+    public void validateJsonExampleWithError() {//проверка матчера на негативные данные
         given().log().uri()
                 .when().get("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyBoFQSFeZAH2klr_j4oktUs5QOg1pOWYkQ&input=New York&inputtype=textquery&fields=address_component,adr_address, business_status,formatted_address,geometry,icon,icon_mask_base_uri,icon_background_color,name,permanently_closed (deprecated),photo,place_id,plus_code, type,url,utc_offset,vicinity.&language=ru")
                 .then().body(matchesJsonSchemaInClasspath("jsonSchemaWithError.json")).log().body();
     }
 
+    @Test
+    public void getMapOfElementsWithSomeKey() {//апи отдает ответы без данных
+        Response response =
+                given().spec(requestSpecificationForSwapiTests).log().uri().
+                        when().get(SWAPI_PATH + SWAPI_GET_PEOPLE);
+        System.out.println("response--->" + response.asString());
+        Map<String, ?> someObject = response
+                .path("results.find {it.name = 'Luke SkyWalker'}");//извлечение данных из обьекта
+        System.out.println("someObject---> " + someObject);
+    }
 }
